@@ -3,14 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-
 import './styles/normalize.css'
 import './assets/iconfont/iconfont.css'
-
 import * as filters from './filters'
-
-// import Meta from 'vue-meta'
-// Vue.use(Meta)
+// rem转换
+import 'lib-flexible/flexible.js'
 
 // 引用公用的方法
 import Mixin from './mixins'
@@ -21,14 +18,6 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false
 Vue.mixin(Mixin)
-
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.icon) {
-//     document.icon =
-//       'https://maint.deeptel.com.cn/upload/M00/00/27/cWrKpVv7lQKASwaXAAEG_RLR1Ak009.png';
-//   }
-//   next();
-// });
 
 new Vue({
   router,

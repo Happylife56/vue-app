@@ -28,7 +28,9 @@
       width="120"
     >
       <template slot-scope="scope">
-        <el-button @click="handleDelete(scope.row)">删除</el-button>
+        <el-button @click="handleDelete(scope.row)">
+          删除
+        </el-button>
       </template>
     </el-table-column>
     <div slot="empty">
@@ -98,30 +100,30 @@ export default {
         }
       ],
       tableDatas: []
-    };
+    }
   },
   watch: {
     tableData(val) {
       if (val.length) {
         this.$nextTick(() => {
-          let container = this.$el.querySelector('.el-table__body-wrapper');
-          container.scrollTop = container.scrollHeight;
-        });
+          const container = this.$el.querySelector('.el-table__body-wrapper')
+          container.scrollTop = container.scrollHeight
+        })
       }
     }
   },
   mounted() {
     setTimeout(() => {
-      this.setTableBottom();
-    }, 100);
+      this.setTableBottom()
+    }, 100)
   },
   methods: {
-    //表格出现滚动条滚动到底部
+    // 表格出现滚动条滚动到底部
     setTableBottom() {
-      let container = this.$el.querySelector('.el-table__body-wrapper');
-      container.scrollTop = container.scrollHeight;
+      const container = this.$el.querySelector('.el-table__body-wrapper')
+      container.scrollTop = container.scrollHeight
     },
-    //修改表格的头信息
+    // 修改表格的头信息
     renderHeader(h, { column }) {
       // 重新渲染表头
       if (column.property == 'price') {
@@ -133,21 +135,21 @@ export default {
               <i class="el-icon-warning" style="color:#d2d2d2;font-size:20px" />
             </el-tooltip>
           </span>
-        );
+        )
       }
       if (column.property == 'delete') {
         return (
           <span>
             <i class="el-icon-delete" style="font-size:24px" />
           </span>
-        );
+        )
       }
     },
-    //删除
+    // 删除
     handleDelete(row) {
-      let index = this.tableData.indexOf(row);
-      this.tableData.splice(index, 1);
+      const index = this.tableData.indexOf(row)
+      this.tableData.splice(index, 1)
     }
   }
-};
+}
 </script>

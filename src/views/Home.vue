@@ -1,9 +1,6 @@
 <template>
   <div class="home">
-    <Transition
-      name="fade-transform"
-      mode="out-in"
-    >
+    <Transition name="fade-transform" mode="out-in">
       <KeepAlive>
         <RouterView></RouterView>
       </KeepAlive>

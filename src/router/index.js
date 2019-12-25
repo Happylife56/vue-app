@@ -2,27 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 
-import orderRouter from './modules/orderRouter'
-import financialRouter from './modules/financialRouter'
-
+const requireModule = require.context('./modules', true, /\.js$/)
+const module = requireModule.keys().map(key => requireModule(key).default)
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [{
     path: '/',
     name: 'Home',
     component: Home,
     redirect: '/collect',
-    children: [{
-      path: '/collect',
-      name: 'collect', // 收银
-      meta: {
-        title: '收银平台'
-      },
-      component: () => import('@/views/Collect.vue')
-    },
-    orderRouter, // 订单
-    financialRouter // 财务
+    children: [
+      ...module
     ]
   },
   {
@@ -32,3 +23,11 @@ export default new Router({
   }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  to.matched.some(record => console.log(record.meta))
+  next()
+})
+
+export default router

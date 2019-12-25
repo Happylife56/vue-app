@@ -3,7 +3,9 @@
   <div>
     <!-- 调用组件  -->
     <draggable element="ul" v-model="list">
-      <li v-for="(item, index) in list" :key="index">{{ item.name }}</li>
+      <li v-for="(item, index) in list" :key="index">
+        {{ item.name }}
+      </li>
     </draggable>
     <!-- 输出list数据 -->
     {{ list }}
@@ -12,11 +14,11 @@
 
 <script>
 // 引入拖拽组件
-import draggable from 'vuedraggable';
+import draggable from 'vuedraggable'
 export default {
-  name: 'demo',
+  name: 'Demo',
   components: {
-    //调用组件
+    // 调用组件
     draggable
   },
   data() {
@@ -47,7 +49,7 @@ export default {
           name: 'f'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
